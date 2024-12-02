@@ -14,6 +14,10 @@ case $(printf "%02d" $1) in
         uiua $FILE
         ;;
 
+    02)
+        build/02
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

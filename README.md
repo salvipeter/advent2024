@@ -11,4 +11,4 @@ Here's a table of the languages.
 | Day | Language | Implementation | Notes                                     |
 |-----|----------|----------------|-------------------------------------------|
 | 1   | Uiua     | 0.14.0-dev.5   | Sort (⍆) was still experimental in 0.13.0 |
-
+| 2   | Assembly | NASM 2.16.03   | x86-64 Linux, uses only syscalls          |
