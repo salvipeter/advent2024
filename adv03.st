@@ -1,5 +1,5 @@
-Object subclass: #Day04.
-Day04 class extend [
+Object subclass: #Adv03.
+Adv03 class extend [
     file: name part: p [
         | data sum enable |
         sum := 0.
@@ -19,5 +19,5 @@ Day04 class extend [
         ^ sum
     ]
 ]
-Transcript show: (Day04 file: 'adv03.txt' part: 1) printString; cr.
-Transcript show: (Day04 file: 'adv03.txt' part: 2) printString; cr.
+Transcript show: (Adv03 file: 'adv03.txt' part: 1) printString; cr.
+Transcript show: (Adv03 file: 'adv03.txt' part: 2) printString; cr.
