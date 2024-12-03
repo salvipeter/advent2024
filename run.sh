@@ -18,6 +18,10 @@ case $(printf "%02d" $1) in
         build/02
         ;;
 
+    03)
+        gst -q adv03.st
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

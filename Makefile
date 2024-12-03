@@ -10,4 +10,4 @@ generated/adv02-gen.asm: adv02.asm
                for (i = 1; i <= NF; i++)  \
                  line = line $$i ",";     \
                print line "-1" }          \
-             END { print "reports equ    ", NR}' adv02.txt >> $@
+             END { print "reports equ    ", NR }' adv02.txt >> $@
