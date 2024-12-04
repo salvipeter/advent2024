@@ -1,10 +1,10 @@
-# Some solutions from the BQN community (to be "decoded" later):
+# Some (minimally adapted) solutions from the BQN community (to be "decoded" later):
 
 # https://codeberg.org/Rampoina/aoc/
 Count←+´⍷⟜(⌽⊸∾)
 D←(+⌜´↕¨∘≢)⊸⊔
-•Show+´∾"XMAS"⊸Count¨¨⟨<˘,<˘⍉,D,D⌽⟩{𝕎𝕩}¨<>data
-•Show+´∧´¨"MAS"⊸Count¨¨⥊{⟨2⊸⊑D,2⊸⊑D∘⌽⟩{𝕎𝕩}¨<𝕩}¨<⎉2 3‿3↕>data
+•Show+´∾"XMAS"⊸Count¨¨⟨<˘,<˘⍉,D,D⌽⟩{𝕎𝕩}¨<data
+•Show+´∧´¨"MAS"⊸Count¨¨⥊{⟨2⊸⊑D,2⊸⊑D∘⌽⟩{𝕎𝕩}¨<𝕩}¨<⎉2 3‿3↕data
 
 # https://github.com/dzaima/aoc/
 a←⌽∘⍉⍟(↕4)data
@@ -16,8 +16,7 @@ c←(↕≠data)⌽˘lp
 
 # https://github.com/cooijmanstim/advent2024/
 Swizzle←{↑‿(1+2×¯1⊑≢𝕩)⥊𝕩∾˘' '¨𝕩}
-x←>data
-haystacks←∾´⟨<˘x,<˘⍉x,<˘⍉Swizzle x,<˘⍉Swizzle⌽x⟩
+haystacks←∾´⟨<˘data,<˘⍉data,<˘⍉Swizzle data,<˘⍉Swizzle⌽data⟩
 needles←"XMAS"‿"SAMX"
 •Show+´⥊(+´∘⥊)¨needles⍷⌜haystacks
-•Show+´⥊{∧´∨´<˘"MAS"‿"SAM"≡⌜<˘(2‿4‿6≍0‿4‿8)⊏⥊𝕩}⎉2 3‿3↕x
+•Show+´⥊{∧´∨´<˘"MAS"‿"SAM"≡⌜<˘(2‿4‿6≍0‿4‿8)⊏⥊𝕩}⎉2 3‿3↕data
