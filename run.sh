@@ -22,6 +22,15 @@ case $(printf "%02d" $1) in
         gst -q adv03.st
         ;;
 
+    04)
+        FILE=generated/adv04-gen.bqn
+        awk 'BEGIN { FS = "" } \
+             { s = s $0 }      \
+             END { print "data←" NR "‿" NF "⥊\"" s "\"" }' adv04.txt > $FILE
+        cat adv04.bqn >> $FILE
+        bqn $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

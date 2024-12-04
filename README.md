@@ -13,3 +13,4 @@ Here's a table of the languages.
 | 1   | Uiua      | 0.14.0-dev.5         | Sort (⍆) was still experimental in 0.13.0 |
 | 2   | Assembly  | NASM 2.16.03         | x86-64 Linux, uses only syscalls          |
 | 3   | Smalltalk | GNU Smalltalk 3.2.92 | Reads the data by itself                  |
+| 4   | BQN       | CBQN cf19280         | Don't ask me how it works...              |
