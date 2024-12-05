@@ -1,7 +1,7 @@
 : less ( a b -- f )
   >R >R rules BEGIN
-    DUP @ 0<> WHILE ( addr ; R: b a )
-    DUP @ 2R@ ROT ( addr b a l ; R: b a )
+    DUP @ 0<> WHILE \ addr ; R: b a
+    DUP @ 2R@ ROT   \ addr b a l ; R: b a
     = IF
       OVER CELL+ @ = IF DROP 2R> 2DROP TRUE EXIT THEN
     ELSE
@@ -11,7 +11,7 @@
 
 : check ( addr - f )
   BEGIN
-    DUP DUP @ SWAP CELL+ @ DUP 0<> WHILE ( addr a b )
+    DUP DUP @ SWAP CELL+ @ DUP 0<> WHILE \ addr a b
     SWAP less IF DROP FALSE EXIT THEN CELL+
   REPEAT 2DROP DROP TRUE ;
 
@@ -21,7 +21,7 @@
 
 : position ( addr x -- n )
   >R 0 SWAP BEGIN
-    DUP @ 0<> WHILE ( cnt addr ; R: x )
+    DUP @ 0<> WHILE \ cnt addr ; R: x
     DUP @ R@ less IF SWAP 1+ SWAP THEN CELL+
   REPEAT R> 2DROP ;
 
@@ -33,7 +33,7 @@
 
 : solve ( -- )
   0 0 pages BEGIN
-    DUP DUP length 2/ OVER check IF ( p2 p1 addr addr len/2 )
+    DUP DUP length 2/ OVER check IF \ p2 p1 addr addr len/2
       CELLS + @ ROT + SWAP
     ELSE
       nth >R ROT R> + ROT ROT
