@@ -13,14 +13,15 @@ path pos dir | outside pos = []
              | blocked pos = path (step pos (back dir)) (turn dir)
              | otherwise   = pos : path (step pos dir) dir
 
--- Optimization: remembers only the path _after_ the obtrusion
+-- Optimization: remembers only the path _after_ the obtrusion,
+--               and only those points where the guard turns.
 -- (Interestingly, using a Set for acc would make it slower.)
 loops pos dir acc obt
     | outside next = False
     | next == obt  = loops pos (turn dir) (maybe (Just []) Just acc) obt
-    | blocked next = loops pos (turn dir) acc obt
+    | blocked next = loops pos (turn dir) (fmap ((pos,dir) :) acc) obt
     | visited      = True
-    | otherwise    = loops next dir (fmap ((next,dir) :) acc) obt
+    | otherwise    = loops next dir acc obt
     where next     = step pos dir
           visited  = maybe False (elem (next,dir)) acc
 

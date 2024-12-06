@@ -15,6 +15,6 @@ Here's a table of the languages.
 | 3   | Smalltalk | GNU Smalltalk 3.2.92 | Reads the data by itself                           |
 | 4   | BQN       | CBQN cf19280         | Don't ask me how it works...                       |
 | 5   | Forth     | Gforth 0.7.9         | Uses only the core and core extension wordsets [1] |
-| 6   | Haskell   | GHC 9.4.8            | Reasonably fast (<1.5m) after optimization         |
+| 6   | Haskell   | GHC 9.4.8            | Fast after some optimization                       |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
