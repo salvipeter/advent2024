@@ -44,6 +44,10 @@ case $(printf "%02d" $1) in
         gforth $FILE -e bye
         ;;
 
+    06)
+        build/06
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
