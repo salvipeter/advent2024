@@ -48,6 +48,18 @@ case $(printf "%02d" $1) in
         build/06
         ;;
 
+    07)
+        FILE=generated/adv07-gen.erl
+        cat adv07.erl > $FILE
+        awk 'BEGIN { print "data() -> [" }             \
+             { gsub(/: /, ",["); gsub(/ /, ",");       \
+               s[NR] = "{" $0 "]}" }                   \
+             END { for (i = 1; i <= NR; i++)           \
+                       print s[i] (i < NR ? "," : ""); \
+                   print "]." }' adv07.txt >> $FILE
+        escript $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
