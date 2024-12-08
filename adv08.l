@@ -19,15 +19,14 @@
           (- (cdr a) (cdr b))))
 
 (de part1 (a b)
-    (list
-     (sub a (sub b a))
-     (sub b (sub a b))))
+    (filter inside?
+            (list (sub a (sub b a))
+                  (sub b (sub a b)))))
 
 (de antinodes (gen lst)
     (when lst
       (let (a (car lst))
-        (append (mapcan '((b)
-                          (filter inside? (gen a b)))
+        (append (mapcan '((b) (gen a b))
                         (cdr lst))
                 (antinodes gen (cdr lst))))))
 
