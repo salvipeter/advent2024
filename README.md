@@ -13,9 +13,10 @@ Here's a table of the languages.
 | 1   | Uiua      | 0.14.0-dev.5         | Sort (⍆) was still experimental in 0.13.0          |
 | 2   | Assembly  | NASM 2.16.03         | x86-64 Linux, uses only syscalls                   |
 | 3   | Smalltalk | GNU Smalltalk 3.2.92 | Reads the data by itself                           |
-| 4   | BQN       | CBQN cf19280         | Don't ask me how it works...                       |
+| 4   | BQN       | CBQN cf19280         |                                                    |
 | 5   | Forth     | Gforth 0.7.9         | Uses only the core and core extension wordsets [1] |
-| 6   | Haskell   | GHC 9.4.8            | Fast after some optimization                       |
-| 7   | Erlang    | Erlang/OTP 27.1.2    | No concurrency though :(                           |
+| 6   | Haskell   | GHC 9.4.8            |                                                    |
+| 7   | Erlang    | Erlang/OTP 27.1.2    |                                                    |
+| 8   | PicoLisp  | PicoLisp 18.9.5      |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)

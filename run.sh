@@ -60,6 +60,15 @@ case $(printf "%02d" $1) in
         escript $FILE
         ;;
 
+    08)
+        FILE=generated/adv08-gen.l
+        awk 'BEGIN { print "(setq data '\''(" } \
+             { print "\"" $0 "\"" }             \
+             END { print "))" }' adv08.txt > $FILE
+        cat adv08.l >> $FILE
+        pil $FILE -bye
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
