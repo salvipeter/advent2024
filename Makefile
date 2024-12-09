@@ -28,7 +28,7 @@ generated/adv09-gen.for: adv09.for
 	awk 'BEGIN { FS = "" }                      \
              { i = 1;                               \
                while (i <= NF) {                    \
-                 s = "     $$";                     \
+                 s = "     $$     ";                \
                  for (j = 1; j < 30; j++) {         \
                    s = s $$i;                       \
                    i++;                             \
