@@ -51,11 +51,11 @@ case $(printf "%02d" $1) in
     07)
         FILE=generated/adv07-gen.erl
         cat adv07.erl > $FILE
-        awk 'BEGIN { print "data() -> [" }             \
-             { gsub(/: /, ",["); gsub(/ /, ",");       \
-               s[NR] = "{" $0 "]}" }                   \
-             END { for (i = 1; i <= NR; i++)           \
-                       print s[i] (i < NR ? "," : ""); \
+        awk 'BEGIN { print "data() -> [" }           \
+             { gsub(/: /, ",["); gsub(/ /, ",");     \
+               s[NR] = "{" $0 "]}" }                 \
+             END { for (i = 1; i <= NR; i++)         \
+                     print s[i] (i < NR ? "," : ""); \
                    print "]." }' adv07.txt >> $FILE
         escript $FILE
         ;;
@@ -67,6 +67,10 @@ case $(printf "%02d" $1) in
              END { print "))" }' adv08.txt > $FILE
         cat adv08.l >> $FILE
         pil $FILE -bye
+        ;;
+
+    09)
+        build/09
         ;;
 
     *)
