@@ -1,4 +1,4 @@
-all: build/*
+all: $(patsubst %, build/%, 02 06 09 10)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -40,3 +40,17 @@ generated/adv09-gen.for: adv09.for
                  print s                            \
                } }' adv09.txt >> $@
 	awk 'start { print } /PLACEHOLDER/ { start = 1 }' $< >> $@
+
+build/10: generated/adv10/go.mod generated/adv10/adv10-gen.go
+	go build -C generated/adv10 -o $(shell pwd -P)/$@
+generated/adv10/go.mod:
+	mkdir -p generated/adv10
+	echo 'module github.com/salvipeter/advent2024' > $@
+	echo 'go 1.23.4' >> $@
+generated/adv10/adv10-gen.go: adv10.go
+	cat $< > $@
+	awk 'BEGIN { FS = ""; print "var data = [][]int{" } \
+             { s = "{";                                     \
+               for (i = 1; i <= NF; i++) s = s $$i ",";     \
+               print s "}," }                               \
+             END { print "}" }' adv10.txt >> $@

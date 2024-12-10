@@ -19,5 +19,6 @@ Here's a table of the languages.
 | 7   | Erlang    | Erlang/OTP 27.1.2    |                                                    |
 | 8   | PicoLisp  | PicoLisp 18.9.5      |                                                    |
 | 9   | FORTRAN   | GNU Fortran 14.2.1   | Needs 8-byte integers (-fdefault-integer-8)        |
+| 10  | Go        | Go 1.23.4            |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
