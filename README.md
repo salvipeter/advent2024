@@ -20,5 +20,6 @@ Here's a table of the languages.
 | 8   | PicoLisp  | PicoLisp 18.9.5      |                                                    |
 | 9   | FORTRAN   | GNU Fortran 14.2.1   | Needs 8-byte integers (-fdefault-integer-8)        |
 | 10  | Go        | Go 1.23.4            |                                                    |
+| 11  | Prolog    | SWI-Prolog 9.2.7     | Originally planned to do it in Perl                |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)

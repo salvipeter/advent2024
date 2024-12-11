@@ -77,6 +77,13 @@ case $(printf "%02d" $1) in
         build/10
         ;;
 
+    11)
+        FILE=generated/adv11-gen.pl
+        cat adv11.pl > $FILE
+        awk '{ gsub(/ /, ","); print "data([" $0 "])." }' adv11.txt >> $FILE
+        swipl -q -l $FILE -t solve
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
