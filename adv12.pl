@@ -8,7 +8,7 @@ my $count = 0;
 for my $i (0..$size-1) {
     if ($groups[$i] == 0) {
         $count++;
-        &flood(int($i / $width), $i % $width, $count)
+        &flood(int($i / $width), $i % $width, $count);
     }
 }
 
@@ -65,7 +65,7 @@ sub mark {
     $k = $i - $k;               # index of probable previous cell with the same fence
     if ($pred || $groups[$j] != $g) {
         $counted{"$i,$c"} = 1;
-        return 1 if (!exists $counted{"$k,$c"} || $groups[$k] != $g);
+        return !exists $counted{"$k,$c"} || $groups[$k] != $g
     }
     return 0
 }
