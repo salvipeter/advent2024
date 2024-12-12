@@ -2,8 +2,8 @@
 
 This time I decided to solve each day in a different programming language.
 
-To make the challenge easier, I usually used AWK to convert the data files into
-inline data in the day's language (I tried to be fair and only do trivial transformations).
+To make the challenge easier, I used AWK to convert the data files into
+inline data in the day's language (I tried to be fair and do only trivial transformations).
 After `make`-ing the project, you can run a specific day by `./run.sh` followed by the day's number.
 
 Here's a table of the languages.
@@ -21,5 +21,6 @@ Here's a table of the languages.
 | 9   | FORTRAN   | GNU Fortran 14.2.1   | Needs 8-byte integers (-fdefault-integer-8)        |
 | 10  | Go        | Go 1.23.4            |                                                    |
 | 11  | Prolog    | SWI-Prolog 9.2.7     | Originally planned to do it in Perl                |
+| 12  | Perl      | Perl 5.40.0          | Command line argument indicates Part 1 or 2        |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
