@@ -61,7 +61,7 @@ generated/adv13.o: generated/adv13-gen.zig
 	zig build-obj -femit-bin=$@ $< # note issue #13179
 generated/adv13-gen.zig: adv13.zig
 	awk '/PLACEHOLDER/ { exit } { print }' $< > $@
-	awk 'BEGIN { FS = "[ +=]" }                                    \
+	awk 'BEGIN { FS = "[ +=]" }                                   \
              /A:/ { print ".{ .a = .{ .x = " $$4 " .y = " $$6 " }," } \
  	     /B:/ { print ".b = .{ .x = " $$4 " .y = " $$6 " }," }    \
              /e:/ { print ".p = .{ .x = " $$3 " .y = " $$5 " } }," }' adv13.txt >> $@

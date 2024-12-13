@@ -1,0 +1,79 @@
+While  the problem  states  that  we should  search  for the  cheapest
+solution, this is  only for misleading (as is the  information that no
+button needs to be pressed more than 100 times). But there is one case
+when there may be multiple solutions: when the A and B vectors and the
+P  position  vector of  the  prize  are  all  parallel to  each  other
+(although there was no such case in the problem dataset).
+
+That leads to the Diophantine equation
+
+  u A + v B = P,    u >= 0, v >= 0,
+
+where A, B and P are represented by their (e.g.) X coordinates.
+
+Note that we also want to minimize
+
+  3 * u + v.
+
+For a solution to exist, we need
+
+  P mod gcd(A, B) = 0.
+
+A first solution can be found by the extended Euclidean algorithm:
+
+  (u, v) = euc(A, B) * P / gcd(A, B).
+
+If (u, v) is a solution, then other solutions are given by
+
+  (u + k * b, v - k * a),
+
+where k is an arbitrary integer and
+
+  a = A / gcd(A, B),  b = B / gcd(A, B).
+
+The derivative of
+
+  3 * (u + k * b) + (v - k * a)
+
+by k is
+
+  3 * b - a,
+
+meaning that increasing k increases the cost by 3 * b - a.
+
+So if 3 * b < a, we want the maximal k, otherwise the minimal.
+
+These are given by
+
+  k_min = -floor(u / b),  k_max = floor(v / a).
+
+So in the Zig code, instead of the assertion, we could have:
+
+  if (d == 0) {
+      if (m.a.x * py == m.a.y * px) {
+          const g = @as(i64, @intCast(std.math.gcd(@abs(m.a.x), @abs(m.b.x))));
+          const a = @divExact(m.a.x, g);
+          const b = @divExact(m.b.x, g);
+          const p = px;
+          if (@mod(p, g) == 0) {
+              const uv = euc(m.a.x, m.b.x);
+              var u = uv[0];
+              var v = uv[1];
+              u *= @divExact(p, g);
+              v *= @divExact(p, g);
+              var k: i64 = 0;
+              if (3 * b < a)
+                  k = @divFloor(v, a)
+              else
+                  k = -@divFloor(u, b);
+              u += k * b;
+              v -= k * a;
+              sum += u * 3 + v;
+          }
+      }
+      continue;
+  }
+
+The function `euc()` computes the Bézout coefficients:
+
+  https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode
