@@ -15,8 +15,6 @@ fn tokens(extra: i64) i64 {
         std.debug.assert(d != 0); // parallel vectors would require special handling
         const a = m.b.y * px - m.b.x * py;
         const b = m.a.x * py - m.a.y * px;
-        if (a > 0 and b < 0 or a < 0 and b > 0) // a * b < 0 would overflow
-            continue;
         if (@mod(a, d) == 0 and @mod(b, d) == 0)
             sum += @divExact(a, d) * 3 + @divExact(b, d);
     }
