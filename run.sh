@@ -96,6 +96,10 @@ case $(printf "%02d" $1) in
         perl $FILE 2
         ;;
 
+    13)
+        build/13
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

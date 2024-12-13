@@ -22,5 +22,6 @@ Here's a table of the languages.
 | 10  | Go        | Go 1.23.4            |                                                    |
 | 11  | Prolog    | SWI-Prolog 9.2.7     | Originally planned to do it in Perl                |
 | 12  | Perl      | Perl 5.40.0          | Command line argument indicates Part 1 or 2        |
+| 13  | Zig       | Zig 0.13.0           | Literal array of structs created by AWK            |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)

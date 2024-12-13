@@ -1,4 +1,4 @@
-all: $(patsubst %, build/%, 02 06 09 10)
+all: $(patsubst %, build/%, 02 06 09 10 13)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -54,3 +54,15 @@ generated/adv10/adv10-gen.go: adv10.go
                for (i = 1; i <= NF; i++) s = s $$i ",";     \
                print s "}," }                               \
              END { print "}" }' adv10.txt >> $@
+
+build/13: generated/adv13.o
+	zig build-exe -femit-bin=$@ $<
+generated/adv13.o: generated/adv13-gen.zig
+	zig build-obj -femit-bin=$@ $< # note issue #13179
+generated/adv13-gen.zig: adv13.zig
+	awk '/PLACEHOLDER/ { exit } { print }' $< > $@
+	awk 'BEGIN { FS = "[ +=]" }                                    \
+             /A:/ { print ".{ .a = .{ .x = " $$4 " .y = " $$6 " }," } \
+ 	     /B:/ { print ".b = .{ .x = " $$4 " .y = " $$6 " }," }    \
+             /e:/ { print ".p = .{ .x = " $$3 " .y = " $$5 " } }," }' adv13.txt >> $@
+	awk 'start { print } /PLACEHOLDER/ { start = 1 }' $< >> $@
