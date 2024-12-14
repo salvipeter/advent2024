@@ -100,6 +100,15 @@ case $(printf "%02d" $1) in
         build/13
         ;;
 
+    14)
+        FILE=generated/adv14-gen.js
+        awk 'BEGIN { FS = "[ =]"; print "const data = [" }
+             { print "{p:[" $2 "],v:[" $4 "]}," }
+             END { print "];" }' adv14.txt > $FILE
+        cat adv14.js >> $FILE
+        node $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
