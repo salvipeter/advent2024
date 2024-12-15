@@ -10,7 +10,7 @@ Here's a table of the languages.
 
 | Day | Language   | Implementation       | Notes                                              |
 |-----|------------|----------------------|----------------------------------------------------|
-| 1   | Uiua       | 0.14.0-dev.5         | Sort (⍆) was still experimental in 0.13.0          |
+| 1   | Uiua       | uiua 0.14.0-dev.5    | Sort (⍆) was still experimental in 0.13.0          |
 | 2   | Assembly   | NASM 2.16.03         | x86-64 Linux, uses only syscalls                   |
 | 3   | Smalltalk  | GNU Smalltalk 3.2.92 | Reads the data by itself                           |
 | 4   | BQN        | CBQN cf19280         |                                                    |
@@ -19,10 +19,11 @@ Here's a table of the languages.
 | 7   | Erlang     | Erlang/OTP 27.1.2    |                                                    |
 | 8   | PicoLisp   | PicoLisp 18.9.5      |                                                    |
 | 9   | FORTRAN    | GNU Fortran 14.2.1   | Needs 8-byte integers (-fdefault-integer-8)        |
-| 10  | Go         | Go 1.23.4            |                                                    |
+| 10  | Go         | go 1.23.4            |                                                    |
 | 11  | Prolog     | SWI-Prolog 9.2.7     | Originally planned to do it in Perl                |
-| 12  | Perl       | Perl 5.40.0          | Command line argument indicates Part 1 or 2        |
+| 12  | Perl       | perl 5.40.0          | Command line argument indicates Part 1 or 2        |
 | 13  | Zig        | Zig 0.13.0           | Literal array of structs created by AWK            |
 | 14  | JavaScript | Node.js 23.1.0       | The `show` variable controls image display         |
+| 15  | C          | gcc 14.2.1           |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)

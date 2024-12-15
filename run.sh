@@ -109,6 +109,10 @@ case $(printf "%02d" $1) in
         node $FILE
         ;;
 
+    15)
+        build/15
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

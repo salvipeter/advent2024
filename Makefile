@@ -1,4 +1,4 @@
-all: $(patsubst %, build/%, 02 06 09 10 13)
+all: $(patsubst %, build/%, 02 06 09 10 13 15)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -66,3 +66,14 @@ generated/adv13-gen.zig: adv13.zig
  	     /B:/ { print ".b = .{ .x = " $$4 " .y = " $$6 " }," }    \
              /e:/ { print ".p = .{ .x = " $$3 " .y = " $$5 " } }," }' adv13.txt >> $@
 	awk 'start { print } /PLACEHOLDER/ { start = 1 }' $< >> $@
+
+build/15: generated/adv15-gen.c
+	gcc -o $@ $<
+generated/adv15-gen.c: adv15.c
+	awk 'NR == 1 { print "int width =", length($$1) ";";         \
+                       print "char map[][" length($$1) + 1 "] = {" } \
+             /[#.O]/ { if (NR > 1) printf(",") }                     \
+             /^$$/ { print "};\nchar moves[] ="; next }              \
+             { print "\"" $$0 "\"" }                                 \
+             END { print ";" }' adv15.txt > $@
+	cat $< >> $@
