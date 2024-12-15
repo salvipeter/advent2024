@@ -24,6 +24,6 @@ Here's a table of the languages.
 | 12  | Perl       | perl 5.40.0          | Command line argument indicates Part 1 or 2        |
 | 13  | Zig        | Zig 0.13.0           | Literal array of structs created by AWK            |
 | 14  | JavaScript | Node.js 23.1.0       | The `show` variable controls image display         |
-| 15  | C          | gcc 14.2.1           |                                                    |
+| 15  | C          | gcc 14.2.1           | Command line argument animates Part 1 or 2         |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)

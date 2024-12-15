@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 bool move(char **map, int x, int y, int dx, int dy, bool dry_run) {
   bool ok;
@@ -35,9 +36,13 @@ bool move(char **map, int x, int y, int dx, int dy, bool dry_run) {
   }
 }
 
-int main() {
+/* 1st argument: 1 or 2; 2nd argument: msecs to wait (50000 by default) */
+int main(int argc, char **argv) {
   int height = sizeof(map) / sizeof(char) / width - 1;
   int n = sizeof(moves) / sizeof(char) - 1;
+
+  if (argc > 1) printf("[2J[?25l"); /* clear the screen and hide the cursor */
+  int msecs = argc > 2 ? atoi(argv[2]) : 50000;
 
   /* Copy and double the map for Part 2 */
   char **dbl = (char **)malloc(height * sizeof(char *));
@@ -83,6 +88,13 @@ int main() {
       map[y][x] = '.';
       x += dx; y += dy;
     }
+    /* Display */
+    if (argc > 1 && argv[1][0] == '1') {
+      printf("[0;0H");        /* move cursor to the top-left */
+      for (int i = 0; i < height; ++i)
+        printf("%s\n", map[i]);
+      usleep(msecs);
+    }
   }
 
   /* GPS calculation */
@@ -109,7 +121,7 @@ int main() {
     switch (dbl[y1][x1]) {
     case '[':
     case ']':
-      if (move(dbl, x1, y1, dx, dy, true)) { /* First do a dry run */
+      if (move(dbl, x1, y1, dx, dy, true)) { /* first do a dry run */
         move(dbl, x1, y1, dx, dy, false);
         dbl[y1][x1] = '@';
         dbl[y][x] = '.';
@@ -124,6 +136,13 @@ int main() {
     case 'O':
       break;
     }
+    /* Display */
+    if (argc > 1 && argv[1][0] == '2') {
+      printf("[0;0H");        /* move cursor to the top-left */
+      for (int i = 0; i < height; ++i)
+        printf("%s\n", dbl[i]);
+      usleep(msecs);
+    }
   }
 
   /* GPS calculation */
@@ -133,6 +152,8 @@ int main() {
       if (dbl[i][j] == '[')
         gps += i * 100 + j;
   printf("%d\n", gps);
+
+  if (argc > 1) printf("[?25h"); /* show the cursor */
 
   /* Free the doubled map */
   for (int i = 0; i < height; ++i)
