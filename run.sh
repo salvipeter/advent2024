@@ -113,6 +113,15 @@ case $(printf "%02d" $1) in
         build/15
         ;;
 
+    16)
+        FILE=generated/adv16-gen.py
+        awk 'BEGIN { print "data = [" }
+             { print "\"" $0 "\"," }
+             END { print "]" }' adv16.txt > $FILE
+        cat adv16.py >> $FILE
+        python $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
