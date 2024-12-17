@@ -78,5 +78,11 @@ generated/adv15-gen.c: adv15.c
              END { print ";" }' adv15.txt > $@
 	cat $< >> $@
 
-build/17: adv17.rs
+build/17: generated/adv17-gen.rs
 	rustc -o $@ $<
+generated/adv17-gen.rs: adv17.rs
+	awk '/Register/ { print "const", $$2, "u64 = ", $$3 ";" }                \
+             /Program/ {                                                         \
+               print "const PROGRAM: [u8;", split($$2, x, ",") "] = [" $$2 "];" \
+             }' adv17.txt > $@
+	cat $< >> $@
