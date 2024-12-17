@@ -122,6 +122,10 @@ case $(printf "%02d" $1) in
         python $FILE
         ;;
 
+    17)
+        build/17
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

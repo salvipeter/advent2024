@@ -1,4 +1,4 @@
-all: $(patsubst %, build/%, 02 06 09 10 13 15)
+all: $(patsubst %, build/%, 02 06 09 10 13 15 17)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -77,3 +77,6 @@ generated/adv15-gen.c: adv15.c
              { print "\"" $$0 "\"" }                                 \
              END { print ";" }' adv15.txt > $@
 	cat $< >> $@
+
+build/17: adv17.rs
+	rustc -o $@ $<
