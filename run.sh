@@ -126,6 +126,10 @@ case $(printf "%02d" $1) in
         build/17
         ;;
 
+    18)
+        build/18
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

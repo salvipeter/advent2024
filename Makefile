@@ -1,4 +1,4 @@
-all: $(patsubst %, build/%, 02 06 09 10 13 15 17)
+all: $(patsubst %, build/%, 02 06 09 10 13 15 17 18)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -85,4 +85,12 @@ generated/adv17-gen.rs: adv17.rs
              /Program/ {                                                         \
                print "const PROGRAM: [u8;", split($$2, x, ",") "] = [" $$2 "];" \
              }' adv17.txt > $@
+	cat $< >> $@
+
+build/18: generated/adv18-gen.sml
+	polyc -o $@ $<
+generated/adv18-gen.sml: adv18.sml
+	awk 'BEGIN { print "val data = [" }                 \
+             { s = NR > 1 ? "," : ""; print s "(" $$0 ")" } \
+             END { print "]" }' adv18.txt > $@
 	cat $< >> $@
