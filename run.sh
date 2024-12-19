@@ -130,6 +130,18 @@ case $(printf "%02d" $1) in
         build/18
         ;;
 
+    19)
+        FILE=generated/adv19-gen.tcl
+        awk 'NR == 1 {
+               gsub(/,/, "");
+               print "set towels {" $0 "}" }
+             /^$/ { print "set data {" }
+             NF == 1 { print }
+             END { print "}" }' adv19.txt > $FILE
+        cat adv19.tcl >> $FILE
+        tclsh $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
