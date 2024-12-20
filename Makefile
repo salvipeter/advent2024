@@ -1,4 +1,4 @@
-all: $(patsubst %, build/%, 02 06 09 10 13 15 17 18)
+all: $(patsubst %, build/%, 02 06 09 10 13 15 17 18 20)
 
 build/02: generated/adv02.o
 	ld -o $@ $<
@@ -93,4 +93,12 @@ generated/adv18-gen.sml: adv18.sml
 	awk 'BEGIN { print "val data = [" }                 \
              { s = NR > 1 ? "," : ""; print s "(" $$0 ")" } \
              END { print "]" }' adv18.txt > $@
+	cat $< >> $@
+
+build/20: generated/adv20_gen.nim
+	nim c -o:$@ --verbosity:0 -d:release $<
+generated/adv20_gen.nim: adv20.nim
+	awk 'BEGIN { print "const data: seq[string] = @[" } \
+            { print "\"" $$0 "\"," }                        \
+            END { print "]" }' adv20.txt > $@
 	cat $< >> $@

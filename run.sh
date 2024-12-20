@@ -142,6 +142,10 @@ case $(printf "%02d" $1) in
         tclsh $FILE
         ;;
 
+    20)
+        build/20
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
