@@ -30,6 +30,7 @@ Here's a table of the languages.
 | 18  | Standard ML | Poly/ML 5.9.1        | Part 2 simple but slow (still below 1m [2])        |
 | 19  | Tcl         | Tcl 8.6.14-4         |                                                    |
 | 20  | Nim         | Nim 2.2.0            |                                                    |
+| 21  | Scheme      | Gambit 4.9.4         | Works also with Chez, CHICKEN, Gauche & Guile      |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
 

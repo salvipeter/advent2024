@@ -146,6 +146,15 @@ case $(printf "%02d" $1) in
         build/20
         ;;
 
+    21)
+        FILE=generated/adv21-gen.scm
+        awk 'BEGIN { print "(define data '\''(" }
+             { print }
+             END { print "))" }' adv21.txt > $FILE
+        cat adv21.scm >> $FILE
+        gsi $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;
