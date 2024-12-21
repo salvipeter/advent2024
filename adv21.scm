@@ -101,11 +101,9 @@
                   (cons 'a (butlast seq)) seq)))
   (apply min (map length-sum perms)))
 
-;;; Called as (DIR-SEQ-LENGTH RELAYS), it returns
-;;; a function of two parameters, (FROM TO),
-;;; which computes the minimal number of keypresses to
-;;; move from FROM to TO when processed over
-;;; RELAYS number of directional keypads.
+;;; Called as (DIR-SEQ-LENGTH RELAYS), it returns a function of two parameters,
+;;; (FROM TO), which computes the minimal number of keypresses to move
+;;; from FROM to TO when processed over RELAYS number of directional keypads.
 ;;; Uses a cache for efficiency.
 (define dir-seq-length
   (let ((cache '()))
