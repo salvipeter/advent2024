@@ -19,7 +19,7 @@ module LMap = Map.Make(OrderedIntList)
 module LSet = Set.Make(OrderedIntList)
 
 let add_change change = function
-  | [a;b;c;d] -> [b;c;d;change]
+  | [_;b;c;d] -> [b;c;d;change]
   | xs        -> xs @ [change]
 
 (*
