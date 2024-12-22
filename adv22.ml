@@ -18,6 +18,10 @@ module OrderedIntList =
 module LMap = Map.Make(OrderedIntList)
 module LSet = Set.Make(OrderedIntList)
 
+let add_change change = function
+  | [a;b;c;d] -> [b;c;d;change]
+  | xs        -> xs @ [change]
+
 (*
   Here `scores` is an LMap mapping price changes to price sums.
   The result is a modified map where the monkey with starting
@@ -29,21 +33,16 @@ let process scores n =
   let rec f prev curr k acc seen scores =
     if k > 2000 then scores else
       let price = curr mod 10 in
-      let change = price - prev mod 10 in
-      let acc' = Seq.cons change acc in
-      if k >= 4 then
-        let xs = Seq.take 4 acc' |> List.of_seq |> List.rev in
-        if LSet.mem xs seen then
-          f curr (step curr) (k + 1) acc' seen scores
-        else
+      let acc' = add_change (price - prev mod 10) acc in
+      let seen' = LSet.add acc' seen in
+      let scores' =
+        if k < 4 || LSet.mem acc' seen then scores else
           let count = function
             | None     -> Some price
             | Some old -> Some (old + price) in
-          let scores' = LMap.update xs count scores in
-          f curr (step curr) (k + 1) acc' (LSet.add xs seen) scores'
-      else
-        f curr (step curr) (k + 1) acc' seen scores
-  in f n (step n) 1 Seq.empty LSet.empty scores
+          LMap.update acc' count scores
+      in f curr (step curr) (k + 1) acc' seen' scores'
+  in f n (step n) 1 [] LSet.empty scores
 
 let p2 = List.fold_left process LMap.empty data
          |> LMap.to_list |> List.map snd |> List.fold_left max 0
