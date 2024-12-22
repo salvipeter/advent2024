@@ -155,6 +155,15 @@ case $(printf "%02d" $1) in
         gsi $FILE
         ;;
 
+    22)
+        FILE=generated/adv22-gen.ml
+        awk 'BEGIN { print "let data = [" }
+             { print $0 ";" }
+             END { print "]" }' adv22.txt > $FILE
+        cat adv22.ml >> $FILE
+        ocaml $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

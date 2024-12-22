@@ -31,6 +31,7 @@ Here's a table of the languages.
 | 19  | Tcl         | Tcl 8.6.14-4         |                                                    |
 | 20  | Nim         | Nim 2.2.0            |                                                    |
 | 21  | Scheme      | Gambit 4.9.4         | Works also with Chez, CHICKEN, Gauche & Guile      |
+| 22  | OCaml       | OCaml 5.2.0          |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
 
