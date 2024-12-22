@@ -18,9 +18,9 @@ module OrderedIntList =
 module LMap = Map.Make(OrderedIntList)
 module LSet = Set.Make(OrderedIntList)
 
-let add_change change = function
-  | [_;b;c;d] -> [b;c;d;change]
-  | xs        -> xs @ [change]
+let add_change d = function
+  | [_;a;b;c] -> [a;b;c;d]
+  | xs        -> xs @ [d]
 
 (*
   Here `scores` is an LMap mapping price changes to price sums.
