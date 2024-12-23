@@ -164,6 +164,15 @@ case $(printf "%02d" $1) in
         ocaml $FILE
         ;;
 
+    23)
+        FILE=generated/adv23-gen.lisp
+        awk 'BEGIN { FS = "-"; print "(defconstant +data+ '\''(" }
+             { print "(" $1, ".", $2 ")" }
+             END { print "))" } ' adv23.txt > $FILE
+        cat adv23.lisp >> $FILE
+        sbcl --script $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

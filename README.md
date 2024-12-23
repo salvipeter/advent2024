@@ -32,6 +32,7 @@ Here's a table of the languages.
 | 20  | Nim         | Nim 2.2.0            |                                                    |
 | 21  | Scheme      | Gambit 4.9.4         | Works also with Chez, CHICKEN, Gauche & Guile      |
 | 22  | OCaml       | OCaml 5.2.0          |                                                    |
+| 23  | Common Lisp | SBCL 2.4.9           |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
 
