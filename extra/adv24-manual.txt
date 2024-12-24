@@ -1,0 +1,41 @@
+3: (good example)
+
+x ^ y -> vmd     [value when carry = 0]
+x & y -> vvj     [new carry when carry = 0]
+whn ^ vmd -> z03 [whn = carry]
+whn & vmd -> mkv 
+vvj | mkv -> tkj [tkj = new carry]
+
+5:
+
+x ^ y -> tvp
+x & y -> sgt
+ggh ^ tvp -> jst  <-- z05
+ggh & tvp -> bhb
+bhb | sgt -> z05  <-- jst
+
+10:
+
+x ^ y -> gdf      <-- mcm
+x & y -> mcm      <-- gdf
+tdw ^ mcm -> z10
+tdw & mcm -> pqq
+pqq | gdf -> gvj
+
+15:
+
+x ^ y -> dvj
+x & y -> z15      <-- dnt
+vhr ^ dvj -> dnt  <-- z15
+vhr & dvj -> ckf
+ckf | dnt -> jpj
+
+30:
+
+x ^ y -> vrg
+x & y -> fhg
+kgr ^ vrg -> gwc  <-- z30
+kgr & vrg -> z30  <-- gwc
+gwc | fhg -> ngc
+
+Solution: dnt,gdf,gwc,jst,mcm,z05,z15,z30

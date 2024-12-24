@@ -173,6 +173,17 @@ case $(printf "%02d" $1) in
         sbcl --script $FILE
         ;;
 
+    24)
+        FILE=generated/adv24-gen.jl
+        awk 'BEGIN { FS = "[ :]"; print "wires = Dict([" }
+             NF == 3 { print "(\"" $1 "\", " $3 ")," }
+             /^$/ { print "])"; print "data = [" }
+             NF == 5 { print "(\"" $1 "\", \"" $2 "\", \"" $3 "\", \"" $5 "\")," }
+             END { print "]" }' adv24.txt > $FILE
+        cat adv24.jl >> $FILE
+        julia -q --startup-file=no $FILE
+        ;;
+
     *)
         echo "Invalid problem number!"
         ;;

@@ -7,6 +7,9 @@ inline data in the day's language (I tried to be fair and do only trivial transf
 After `make`-ing the project, you can run a specific day by `./run.sh` followed by the day's number.
 
 Here's a table of the languages.
+I always selected the language *before* looking at the problem,
+the only exception being Day 11, which I planned to do in Perl,
+but ended up solving it in Prolog (tabling seemed such a good match for the task).
 
 | Day | Language    | Implementation       | Notes                                              |
 |-----|-------------|----------------------|----------------------------------------------------|
@@ -33,6 +36,8 @@ Here's a table of the languages.
 | 21  | Scheme      | Gambit 4.9.4         | Works also with Chez, CHICKEN, Gauche & Guile      |
 | 22  | OCaml       | OCaml 5.2.0          |                                                    |
 | 23  | Common Lisp | SBCL 2.4.9           |                                                    |
+| 24  | Julia       | Julia 1.11.2         |                                                    |
+| 25  | C++         | g++ 14.2.1           |                                                    |
 
 [1] So it can also be run by my [Core Forth implementation](https://github.com/salvipeter/core-forth/)
 
